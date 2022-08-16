@@ -29,7 +29,7 @@ app.engine('html', require('ejs').renderFile);
 
 
 
-const maxLeads = 1;
+const maxLeads = 2000;
 const campaignId = 5;
 app.get("/", async function (req, res) {
   
@@ -47,7 +47,7 @@ app.get("/", async function (req, res) {
     axios.get('http://marketing.unboxbasics.com/campaigns/get_contacts.php?password=UnboxZaid@123')
     .then(function (response) {
       // handle success
-      console.log(response.data);
+      // console.log(response.data);
       const contacts = response.data;
       conn.query("select * from campaign where `id`="+campaignId, function(err, campaigns) {
         let campaign = campaigns[0];
@@ -58,21 +58,20 @@ app.get("/", async function (req, res) {
             const contact = contacts[i];
             const contactId = contact['id'];
             let html = campaign.html;
-            // const email = contact['email_1'];
-            const email = 'write2ranarahul@gmail.com'
+            const email = contact['email_1'];
+            // const email = 'write2ranarahul@gmail.com'
             const email2 = contact['email_2'];
 
             
-            if(leads.find(lead => lead.contact_id === contactId)) {
+            if(leads.find(lead => lead.contact_id == contactId)) {
               console.log('mail already sent')
-              // continue;
+              continue;
             }
 
             if(nonSendEmail.includes(email)) {
               console.log('Email already gone');
               continue;
             }
-
             if(email) {
               if(html.includes('userCount.php')) {
                 html = html.replace('userCount.php', `userCount.php?campaign_id=${campaignId}&contact_id=${contactId}`);
@@ -96,7 +95,6 @@ app.get("/", async function (req, res) {
 
   
             }
-
             // await timeout();
             
           }
