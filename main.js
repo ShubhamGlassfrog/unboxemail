@@ -59,7 +59,7 @@ app.get("/", async function (req, res) {
             const contactId = contact['id'];
             let html = campaign.html;
             // const email = contact['email_1'];
-            const email = 'rahul@glassfrog.design'
+            const email = 'test-9wt0k8f29@srv1.mail-tester.com'
             const email2 = contact['email_2'];
 
             
