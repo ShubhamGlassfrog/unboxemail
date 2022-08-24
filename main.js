@@ -29,8 +29,8 @@ app.engine('html', require('ejs').renderFile);
 
 
 
-const maxLeads = 2000;
-const campaignId = 5;
+const maxLeads = 1;
+const campaignId = 7;
 app.get("/", async function (req, res) {
   
 
@@ -51,21 +51,21 @@ app.get("/", async function (req, res) {
       const contacts = response.data;
       conn.query("select * from campaign where `id`="+campaignId, function(err, campaigns) {
         let campaign = campaigns[0];
-        const subject = "Take a look into our new Collection";
+        const subject = campaign['theme'];
         //add code for not sending emails to already sent emails
         conn.query("select * from campaign_leads where campaign_id='"+campaignId+"'", async function(err, leads) {
           for(let i=0 ; i<maxLeads && i<contacts.length ; i++) {
             const contact = contacts[i];
             const contactId = contact['id'];
             let html = campaign.html;
-            const email = contact['email_1'];
-            // const email = 'write2ranarahul@gmail.com'
+            // const email = contact['email_1'];
+            const email = 'rahul@glassfrog.design'
             const email2 = contact['email_2'];
 
             
             if(leads.find(lead => lead.contact_id == contactId)) {
               console.log('mail already sent')
-              continue;
+              // continue;
             }
 
             if(nonSendEmail.includes(email)) {
