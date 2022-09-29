@@ -30,7 +30,7 @@ app.engine('html', require('ejs').renderFile);
 
 
 const maxLeads = 1;
-const campaignId = 7;
+const campaignId = 8;
 app.get("/", async function (req, res) {
   
 
@@ -59,7 +59,7 @@ app.get("/", async function (req, res) {
             const contactId = contact['id'];
             let html = campaign.html;
             // const email = contact['email_1'];
-            const email = 'test-9wt0k8f29@srv1.mail-tester.com'
+            const email = 'zaid@unboxbasics.com'
             const email2 = contact['email_2'];
 
             

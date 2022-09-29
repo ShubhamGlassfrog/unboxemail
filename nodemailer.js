@@ -29,7 +29,7 @@ const  Mail= async (email,subject,message)=>{
  
  
       var mailOptions = {
-        from: "UNBOX basics offers <"+'offers@unboxbasics.com'+">",
+        from: "UNBOX Basics <"+'offers@unboxbasics.com'+">",
         to: email,
         subject: subject,
         html: message,
