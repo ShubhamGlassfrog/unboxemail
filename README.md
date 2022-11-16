@@ -21,3 +21,5 @@ This application is the cross connectivity application and to run it on local se
  1. **main.js** : This is the JS file and use to run the campaign where desired campaign is help sending the email to the contacts list of the database hosted on the server.
  2. **nodemailer.js**: This file used to send the emails using google keys and email data.
  3. **get_contacts.php**: This is the php file which is hosted on the server and works as API for getting subscribed contacts of the website.
+ 4. **unsubscribe.php**: This is the dynamic file help to unsubscribe the contact from the severs database.
+ 5. **http://marketing.unboxbasics.com/zaid_phpmyadmin**: This link is used to access the phpmyadmin of the server.
